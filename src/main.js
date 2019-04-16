@@ -4,7 +4,9 @@ const THREE = require('three');
 const OrbitControls = require('three-orbit-controls')(THREE)
 
 import Stats from 'stats-js'
-import {objLoaded} from './mario'
+// import {objLoaded} from './mario'
+import {objLoaded} from './rectangle'
+
 import {setupGUI} from './setup'
 
 window.addEventListener('load', function() {
@@ -48,7 +50,24 @@ window.addEventListener('load', function() {
         if (mesh) scene.remove(mesh);
         objLoaded.then(function(geo) {
             mesh = new THREE.Mesh(geo, shader.material);
-            scene.add(mesh);
+            var basicMaterial = new THREE.MeshBasicMaterial( {color: 0xffffff} ); 
+            // scene.add(mesh);
+            var texture = new THREE.TextureLoader().load(require('./assets/lily.bmp'));
+            texture.magFilter = THREE.NearestFilter;
+            var material = new THREE.MeshBasicMaterial({ map: texture});
+            
+            var geometry = new THREE.BoxGeometry(20, 0.1, 20);
+            var materials = [
+                basicMaterial,
+                basicMaterial,
+                material,
+                basicMaterial,
+                basicMaterial,
+                basicMaterial,
+            ];
+            var meshFaceMaterial = new THREE.MeshFaceMaterial( materials );
+            var cube = new THREE.Mesh(geometry, meshFaceMaterial);
+            scene.add(cube);
         });
     }
 
