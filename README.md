@@ -7,4 +7,5 @@
 
 ## Milestone Progress
 - Apply image as texture to an object (painting)
+- Set up EffectComposer, ShaderPass, RenderPass for the ink shader
 - Sobel filtering to find/emphasize edge data
