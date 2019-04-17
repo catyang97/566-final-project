@@ -14,6 +14,14 @@ var InkShader = new EffectComposer.ShaderPass({
         u_amount: {
             type: 'f',
             value: options.amount
+        },
+        screenHeight: {
+            type: 'f', 
+            value: screen.height
+        }, 
+        screenWidth: {
+            type: 'f', 
+            value: screen.width
         }
     },
     vertexShader: require('../glsl/pass-vert.glsl'),
