@@ -31,7 +31,7 @@ void main() {
 
     // If pixel is at an edge, use the original color, else paint white
     // Edge = key characteristic, thick ink. Otherwise, thin ink and more water for ink effect
-    if (g[0] > 10.0/255.0 && g[1] > 10.0/255.0 && g[2] > 10.0/255.0) {
+    if (g[0] > 20.0/255.0 && g[1] > 20.0/255.0 && g[2] > 10.0/255.0) {
         g = color;
     } else {
         g = vec4(1.0);

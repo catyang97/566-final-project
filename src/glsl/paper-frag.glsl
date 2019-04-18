@@ -1,4 +1,3 @@
-
 uniform sampler2D texture;
 uniform int u_useTexture;
 uniform vec3 u_albedo;

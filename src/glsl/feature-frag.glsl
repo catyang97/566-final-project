@@ -14,5 +14,10 @@ void main() {
 
     // Color Segmentation step?
 
+    if (col[3] == 1.0) {
+        newCol = col;
+    } else {
+        newCol = vec4(1.0);
+    }
     gl_FragColor = newCol;
 }
