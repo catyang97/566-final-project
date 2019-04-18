@@ -18,3 +18,4 @@ export function None(renderer, scene, camera) {
 export {default as Grayscale} from './grayscale'
 export {default as Ink} from './ink'
 export {default as Feature} from './feature'
+// export {default as Paper} from './paper'

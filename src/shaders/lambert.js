@@ -1,6 +1,6 @@
 
 const THREE = require('three');
-import {textureLoaded} from '../mario'
+import {textureLoaded} from '../rectangle'
 
 // options for lambert shader
 var options = {

@@ -43,6 +43,19 @@ window.addEventListener('load', function() {
     // this gets called when we set the shader
     function shaderSet(Shader, gui) {
         // create the shader and initialize its gui
+        // shader = new Shader(renderer, scene, camera);
+        // shader.initGUI(gui);
+        // renderer.setClearColor(0x999999, 1.0);
+
+        // // recreate the mesh with a new material
+        // if (mesh) scene.remove(mesh);
+        // objLoaded.then(function(geo) {
+        //     //var geom = new THREE.SphereGeometry(5, 32, 32);
+        //     //geom.computeVertexNormals();
+        //     mesh = new THREE.Mesh(geo, shader.material);
+        //     scene.add(mesh);
+        // });
+        // create the shader and initialize its gui
         shader = new Shader(renderer, scene, camera);
         shader.initGUI(gui);
 

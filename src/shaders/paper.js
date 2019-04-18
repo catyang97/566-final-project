@@ -1,8 +1,7 @@
 
 const THREE = require('three');
-import {textureLoaded} from '../mario'
+import {textureLoaded} from '../rectangle'
 
-// options for lambert shader
 var options = {
     lightColor: '#ffffff',
     lightIntensity: 2,
@@ -64,7 +63,7 @@ export default function(renderer, scene, camera) {
                 }
             },
             vertexShader: require('../glsl/lambert-vert.glsl'),
-            fragmentShader: require('../glsl/paper-frag.glsl')
+            fragmentShader: require('../glsl/paper1-frag.glsl')
         })
     }
 

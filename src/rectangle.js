@@ -1,17 +1,18 @@
 
-// this file is just for convenience. it sets up loading the mario obj and texture
+// this file is just for convenience. it sets up loading the rectangle obj and texture
 
 const THREE = require('three');
 require('three-obj-loader')(THREE)
 
 export var textureLoaded = new Promise((resolve, reject) => {
-    (new THREE.TextureLoader()).load(require('./assets/wahoo.bmp'), function(texture) {
+    (new THREE.TextureLoader()).load(require('./assets/lily.bmp'), function(texture) {
+        
         resolve(texture);
     })
 })
 
 export var objLoaded = new Promise((resolve, reject) => {
-    (new THREE.OBJLoader()).load(require('./assets/rectangle.obj'), function(obj) {
+    (new THREE.OBJLoader()).load(require('./assets/rect.obj'), function(obj) {
         var geo = obj.children[0].geometry;
         geo.computeBoundingSphere();
         resolve(geo);

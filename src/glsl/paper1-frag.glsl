@@ -1,5 +1,14 @@
-uniform sampler2D tDiffuse;
-uniform float u_amount;
+
+uniform sampler2D texture;
+uniform int u_useTexture;
+uniform vec3 u_albedo;
+uniform vec3 u_ambient;
+uniform vec3 u_lightPos;
+uniform vec3 u_lightCol;
+uniform float u_lightIntensity;
+
+varying vec3 f_position;
+varying vec3 f_normal;
 varying vec2 f_uv;
 
 float random1( vec2 p , vec2 seed) {
@@ -39,15 +48,20 @@ float getHeight(vec2 pos) {
   float height = pow(1.0 - perlinNoise(vec3(pos.x, pos.y, 1000.0)), 0.3);
   return height;
 }
-
 void main() {
-  float height = getHeight(vec2(f_uv.x, f_uv.y));
-  vec4 col = texture2D(tDiffuse, f_uv);
+    vec4 color = vec4(u_albedo, 1.0);
+    
+    if (u_useTexture == 1) {
+        color = texture2D(texture, f_uv);
+    }
 
-  float ran = random1(f_uv, vec2(0.2, 0.8));
-  if (ran > 0.5) {
-    gl_FragColor = col; 
-  } else {
-    gl_FragColor = vec4(0.0);
-  }
+    float d = clamp(dot(f_normal, normalize(u_lightPos - f_position)), 0.0, 1.0);
+    float height = getHeight(vec2(f_uv.x, f_uv.y))* 2.0;
+
+    float ran = random1(f_uv, vec2(0.2, 0.8));
+  
+    if (ran < 0.05) {
+        color = color * height; 
+    }
+    gl_FragColor = vec4(d * color.rgb * u_lightCol * u_lightIntensity + u_ambient, 1.0);
 }

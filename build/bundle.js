@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43536,10 +43536,10 @@ Object.defineProperty(exports, "__esModule", {
 // this file is just for convenience. it sets up loading the mario obj and texture
 
 var THREE = __webpack_require__(0);
-__webpack_require__(5)(THREE);
+__webpack_require__(4)(THREE);
 
 var textureLoaded = exports.textureLoaded = new Promise(function (resolve, reject) {
-    new THREE.TextureLoader().load(__webpack_require__(4), function (texture) {
+    new THREE.TextureLoader().load(__webpack_require__(24), function (texture) {
         resolve(texture);
     });
 });
@@ -43554,12 +43554,6 @@ var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./assets/wahoo-1bfe66.bmp";
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44230,13 +44224,13 @@ module.exports = function (THREE) {
 };
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = "\nvarying vec2 f_uv;\nvarying vec3 f_normal;\nvarying vec3 f_position;\n\n// uv, position, projectionMatrix, modelViewMatrix, normal\nvoid main() {\n    f_uv = uv;\n    f_normal = normal;\n    f_position = position;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}"
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44249,16 +44243,16 @@ Object.defineProperty(exports, "__esModule", {
 // this file is just for convenience. it sets up loading the mario obj and texture
 
 var THREE = __webpack_require__(0);
-__webpack_require__(5)(THREE);
+__webpack_require__(4)(THREE);
 
 var textureLoaded = exports.textureLoaded = new Promise(function (resolve, reject) {
-    new THREE.TextureLoader().load(__webpack_require__(4), function (texture) {
+    new THREE.TextureLoader().load(__webpack_require__(22), function (texture) {
         resolve(texture);
     });
 });
 
 var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
-    new THREE.OBJLoader().load(__webpack_require__(24), function (obj) {
+    new THREE.OBJLoader().load(__webpack_require__(23), function (obj) {
         var geo = obj.children[0].geometry;
         geo.computeBoundingSphere();
         resolve(geo);
@@ -44266,7 +44260,7 @@ var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
 });
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44277,15 +44271,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setupGUI = setupGUI;
 
-var _shaders = __webpack_require__(18);
+var _shaders = __webpack_require__(16);
 
 var Shaders = _interopRequireWildcard(_shaders);
 
-var _post = __webpack_require__(16);
+var _post = __webpack_require__(14);
 
 var Post = _interopRequireWildcard(_post);
 
-var _datGui = __webpack_require__(21);
+var _datGui = __webpack_require__(19);
 
 var _datGui2 = _interopRequireDefault(_datGui);
 
@@ -44356,26 +44350,20 @@ function setupGUI(shaderSet, postProcessSet) {
 }
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "./assets/lily-90af6e.bmp";
-
-/***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "index.html";
 
 /***/ }),
-/* 11 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define(t):e.Stats=t()}(this,function(){"use strict";var c=function(){var n=0,l=document.createElement("div");function e(e){return l.appendChild(e.dom),e}function t(e){for(var t=0;t<l.children.length;t++)l.children[t].style.display=t===e?"block":"none";n=e}l.style.cssText="position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000",l.addEventListener("click",function(e){e.preventDefault(),t(++n%l.children.length)},!1);var i=(performance||Date).now(),a=i,o=0,f=e(new c.Panel("FPS","#0ff","#002")),r=e(new c.Panel("MS","#0f0","#020"));if(self.performance&&self.performance.memory)var d=e(new c.Panel("MB","#f08","#201"));return t(0),{REVISION:16,dom:l,addPanel:e,showPanel:t,begin:function(){i=(performance||Date).now()},end:function(){o++;var e=(performance||Date).now();if(r.update(e-i,200),a+1e3<=e&&(f.update(1e3*o/(e-a),100),a=e,o=0,d)){var t=performance.memory;d.update(t.usedJSHeapSize/1048576,t.jsHeapSizeLimit/1048576)}return e},update:function(){i=this.end()},domElement:l,setMode:t}};return c.Panel=function(n,l,i){var a=1/0,o=0,f=Math.round,r=f(window.devicePixelRatio||1),d=80*r,e=48*r,c=3*r,p=2*r,u=3*r,s=15*r,m=74*r,h=30*r,y=document.createElement("canvas");y.width=d,y.height=e,y.style.cssText="width:80px;height:48px";var v=y.getContext("2d");return v.font="bold "+9*r+"px Helvetica,Arial,sans-serif",v.textBaseline="top",v.fillStyle=i,v.fillRect(0,0,d,e),v.fillStyle=l,v.fillText(n,c,p),v.fillRect(u,s,m,h),v.fillStyle=i,v.globalAlpha=.9,v.fillRect(u,s,m,h),{dom:y,update:function(e,t){a=Math.min(a,e),o=Math.max(o,e),v.fillStyle=i,v.globalAlpha=1,v.fillRect(0,0,d,s),v.fillStyle=l,v.fillText(f(e)+" "+n+" ("+f(a)+"-"+f(o)+")",c,p),v.drawImage(y,u+r,s,m-r,h,u,s,m-r,h),v.fillRect(u+m-r,s,r,h),v.fillStyle=i,v.globalAlpha=.9,v.fillRect(u+m-r,s,r,f((1-e/t)*h))}}},c});
 
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = function( THREE ) {
@@ -45401,26 +45389,26 @@ module.exports = function( THREE ) {
 
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _statsJs = __webpack_require__(11);
+var _statsJs = __webpack_require__(9);
 
 var _statsJs2 = _interopRequireDefault(_statsJs);
 
-var _rectangle = __webpack_require__(7);
+var _rectangle = __webpack_require__(6);
 
-var _setup = __webpack_require__(8);
+var _setup = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(10);
+__webpack_require__(8);
 
 var THREE = __webpack_require__(0);
-var OrbitControls = __webpack_require__(12)(THREE);
+var OrbitControls = __webpack_require__(10)(THREE);
 // import {objLoaded} from './mario'
 
 
@@ -45460,23 +45448,43 @@ window.addEventListener('load', function () {
         // create the shader and initialize its gui
         shader = new Shader(renderer, scene, camera);
         shader.initGUI(gui);
+        renderer.setClearColor(0x999999, 1.0);
 
         // recreate the mesh with a new material
         if (mesh) scene.remove(mesh);
         _rectangle.objLoaded.then(function (geo) {
+            //var geom = new THREE.SphereGeometry(5, 32, 32);
+            //geom.computeVertexNormals();
             mesh = new THREE.Mesh(geo, shader.material);
-            var basicMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-            // scene.add(mesh);
-            var texture = new THREE.TextureLoader().load(__webpack_require__(9));
-            texture.magFilter = THREE.NearestFilter;
-            var material = new THREE.MeshBasicMaterial({ map: texture });
-
-            var geometry = new THREE.BoxGeometry(20, 0.1, 20);
-            var materials = [basicMaterial, basicMaterial, material, basicMaterial, basicMaterial, basicMaterial];
-            var meshFaceMaterial = new THREE.MeshFaceMaterial(materials);
-            var cube = new THREE.Mesh(geometry, meshFaceMaterial);
-            scene.add(cube);
+            scene.add(mesh);
         });
+        // create the shader and initialize its gui
+        // shader = new Shader(renderer, scene, camera);
+        // shader.initGUI(gui);
+
+        // recreate the mesh with a new material
+        // if (mesh) scene.remove(mesh);
+        // objLoaded.then(function(geo) {
+        //     mesh = new THREE.Mesh(geo, shader.material);
+        //     var basicMaterial = new THREE.MeshBasicMaterial( {color: 0xffffff} ); 
+        //     // scene.add(mesh);
+        //     var texture = new THREE.TextureLoader().load(require('./assets/lily.bmp'));
+        //     texture.magFilter = THREE.NearestFilter;
+        //     var material = new THREE.MeshBasicMaterial({ map: texture});
+
+        //     var geometry = new THREE.BoxGeometry(20, 0.1, 20);
+        //     var materials = [
+        //         basicMaterial,
+        //         basicMaterial,
+        //         material,
+        //         basicMaterial,
+        //         basicMaterial,
+        //         basicMaterial,
+        //     ];
+        //     var meshFaceMaterial = new THREE.MeshFaceMaterial( materials );
+        //     var cube = new THREE.Mesh(geometry, meshFaceMaterial);
+        //     scene.add(cube);
+        // });
     }
 
     // this gets called when we set the postprocess shader
@@ -45508,7 +45516,7 @@ window.addEventListener('load', function () {
 });
 
 /***/ }),
-/* 14 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45517,7 +45525,7 @@ window.addEventListener('load', function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = Ink;
+exports.default = Feature;
 var THREE = __webpack_require__(0);
 var EffectComposer = __webpack_require__(1)(THREE);
 
@@ -45525,7 +45533,7 @@ var options = {
     amount: 1
 };
 
-var InkShader = new EffectComposer.ShaderPass({
+var FeaturesShader = new EffectComposer.ShaderPass({
     uniforms: {
         tDiffuse: {
             type: 't',
@@ -45548,7 +45556,7 @@ var InkShader = new EffectComposer.ShaderPass({
     fragmentShader: __webpack_require__(31)
 });
 
-function Ink(renderer, scene, camera) {
+function Feature(renderer, scene, camera) {
 
     // this is the THREE.js object for doing post-process effects
     var composer = new EffectComposer(renderer);
@@ -45556,16 +45564,16 @@ function Ink(renderer, scene, camera) {
     // first render the scene normally and add that as the first pass
     composer.addPass(new EffectComposer.RenderPass(scene, camera));
 
-    // then take the rendered result and apply the InkShader
-    composer.addPass(InkShader);
+    // then take the rendered result and apply the FeatureShader
+    composer.addPass(FeatureShader);
 
     // set this to true on the shader for your last pass to write to the screen
-    InkShader.renderToScreen = true;
+    FeatureShader.renderToScreen = true;
 
     return {
         initGUI: function initGUI(gui) {
             gui.add(options, 'amount', 0, 1).onChange(function (val) {
-                InkShader.material.uniforms.u_amount.value = val;
+                FeatureShader.material.uniforms.u_amount.value = val;
             });
         },
 
@@ -45577,7 +45585,7 @@ function Ink(renderer, scene, camera) {
 }
 
 /***/ }),
-/* 15 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45638,7 +45646,7 @@ function Grayscale(renderer, scene, camera) {
 }
 
 /***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45649,7 +45657,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.None = None;
 
-var _grayscale = __webpack_require__(15);
+var _grayscale = __webpack_require__(13);
 
 Object.defineProperty(exports, 'Grayscale', {
     enumerable: true,
@@ -45658,7 +45666,7 @@ Object.defineProperty(exports, 'Grayscale', {
     }
 });
 
-var _ink = __webpack_require__(17);
+var _ink = __webpack_require__(15);
 
 Object.defineProperty(exports, 'Ink', {
     enumerable: true,
@@ -45667,7 +45675,7 @@ Object.defineProperty(exports, 'Ink', {
     }
 });
 
-var _feature = __webpack_require__(14);
+var _feature = __webpack_require__(12);
 
 Object.defineProperty(exports, 'Feature', {
     enumerable: true,
@@ -45694,7 +45702,7 @@ function None(renderer, scene, camera) {
 // follow this syntax to make your shaders available to the GUI
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45763,7 +45771,7 @@ function Ink(renderer, scene, camera) {
 }
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45773,7 +45781,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lambert = __webpack_require__(19);
+var _lambert = __webpack_require__(17);
 
 Object.defineProperty(exports, 'Lambert', {
   enumerable: true,
@@ -45782,7 +45790,7 @@ Object.defineProperty(exports, 'Lambert', {
   }
 });
 
-var _paper = __webpack_require__(20);
+var _paper = __webpack_require__(18);
 
 Object.defineProperty(exports, 'Paper', {
   enumerable: true,
@@ -45794,7 +45802,7 @@ Object.defineProperty(exports, 'Paper', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45856,7 +45864,7 @@ exports.default = function (renderer, scene, camera) {
                     value: options.lightIntensity
                 }
             },
-            vertexShader: __webpack_require__(6),
+            vertexShader: __webpack_require__(5),
             fragmentShader: __webpack_require__(34)
         })
 
@@ -45883,7 +45891,7 @@ var options = {
 };
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45945,7 +45953,7 @@ exports.default = function (renderer, scene, camera) {
                     value: options.lightIntensity
                 }
             },
-            vertexShader: __webpack_require__(6),
+            vertexShader: __webpack_require__(5),
             fragmentShader: __webpack_require__(35)
         })
 
@@ -45962,7 +45970,6 @@ var _mario = __webpack_require__(3);
 var THREE = __webpack_require__(0);
 
 
-// options for lambert shader
 var options = {
     lightColor: '#ffffff',
     lightIntensity: 2,
@@ -45972,14 +45979,14 @@ var options = {
 };
 
 /***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(23)
-module.exports.color = __webpack_require__(22)
+module.exports = __webpack_require__(21)
+module.exports.color = __webpack_require__(20)
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /**
@@ -46739,7 +46746,7 @@ dat.color.toString,
 dat.utils.common);
 
 /***/ }),
-/* 23 */
+/* 21 */
 /***/ (function(module, exports) {
 
 /**
@@ -50404,10 +50411,22 @@ dat.dom.dom,
 dat.utils.common);
 
 /***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "./assets/lily-90af6e.bmp";
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "./assets/rect-7b6f32.obj";
+
+/***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "./assets/rectangle-5f45f0.obj";
+module.exports = __webpack_require__.p + "./assets/wahoo-1bfe66.bmp";
 
 /***/ }),
 /* 25 */
@@ -50687,7 +50706,7 @@ module.exports = function(THREE, EffectComposer) {
 /* 31 */
 /***/ (function(module, exports) {
 
-module.exports = "uniform sampler2D tDiffuse;\nuniform float u_amount;\nvarying vec2 f_uv;\n\nvoid main() {\n    vec4 col = texture2D(tDiffuse, f_uv);\n    float luminance = dot(col.rgb, vec3(0.2126*255.0, 0.7152*255.0, 0.0722*255.0));\n    vec4 newCol = col;\n\n    // Luminance Division step: equations 10 and 11 in section 4.1 of paper\n    newCol = vec4((16.0*ceil(col.r*255.0 / 16.0))/255.0, (16.0*ceil(col.g*255.0 / 16.0))/255.0, (16.0*ceil(col.b*255.0 / 16.0))/255.0, newCol.a);\n    // newCol.rgb = (ceil(luminance/floor(255.0/23.0)) / luminance) * newCol.rbg;\n    newCol = newCol * (u_amount) + col * (1.0 - u_amount);\n\n    // Color Segmentation step?\n\n    if (col[3] == 1.0) {\n        newCol = col;\n    } else {\n        newCol = vec4(1.0);\n    }\n    gl_FragColor = newCol;\n}"
+module.exports = "uniform sampler2D tDiffuse;\nuniform float u_amount;\nvarying vec2 f_uv;\n\nvoid main() {\n    vec4 col = texture2D(tDiffuse, f_uv);\n    float luminance = dot(col.rgb, vec3(0.2126*255.0, 0.7152*255.0, 0.0722*255.0));\n    vec4 newCol = col;\n\n    // Luminance Division step: equations 10 and 11 in section 4.1 of paper\n    newCol = vec4((16.0*ceil(col.r*255.0 / 16.0))/255.0, (16.0*ceil(col.g*255.0 / 16.0))/255.0, (16.0*ceil(col.b*255.0 / 16.0))/255.0, newCol.a);\n    // newCol.rgb = (ceil(luminance/floor(255.0/23.0)) / luminance) * newCol.rbg;\n    newCol = newCol * (u_amount) + col * (1.0 - u_amount);\n\n    // Color Segmentation step?\n    gl_FragColor = newCol;\n}"
 
 /***/ }),
 /* 32 */
@@ -50711,7 +50730,7 @@ module.exports = "\nuniform sampler2D texture;\nuniform int u_useTexture;\nunifo
 /* 35 */
 /***/ (function(module, exports) {
 
-module.exports = "uniform sampler2D texture;\nuniform int u_useTexture;\nuniform vec3 u_albedo;\nuniform vec3 u_ambient;\nuniform vec3 u_lightPos;\nuniform vec3 u_lightCol;\nuniform float u_lightIntensity;\n\nvarying vec3 f_position;\nvarying vec3 f_normal;\nvarying vec2 f_uv;\n\nvoid main() {\n    vec4 color = vec4(u_albedo, 1.0);\n    \n    if (u_useTexture == 1) {\n        color = texture2D(texture, f_uv);\n    }\n\n    float d = clamp(dot(f_normal, normalize(u_lightPos - f_position)), 0.0, 1.0);\n\n    gl_FragColor = vec4(d * color.rgb * u_lightCol * u_lightIntensity + u_ambient, 1.0);\n}"
+module.exports = "\nuniform sampler2D texture;\nuniform int u_useTexture;\nuniform vec3 u_albedo;\nuniform vec3 u_ambient;\nuniform vec3 u_lightPos;\nuniform vec3 u_lightCol;\nuniform float u_lightIntensity;\n\nvarying vec3 f_position;\nvarying vec3 f_normal;\nvarying vec2 f_uv;\n\nfloat random1( vec2 p , vec2 seed) {\n  return fract(sin(dot(p + seed, vec2(127.1, 311.7))) * 43758.5453);\n}\n\n// Worley-Perlin Noise from https://www.shadertoy.com/view/MdGSzt\nvec3 hash(vec3 p3) {\n\tp3 = fract(p3 * vec3(0.1031, 0.11369, 0.13787));\n  p3 += dot(p3, p3.yxz + 20.0);\n  return -1.0 + 2.0 * fract(vec3((p3.x + p3.y) * p3.z, (p3.x + p3.z) * p3.y, (p3.y + p3.z) * p3.x));\n}\n\nfloat perlinNoise(vec3 point) {\n  vec3 pi = floor(point);\n  vec3 pf = point - pi;\n  vec3 w = pf * pf * (3.0 - 2.0 * pf);\n  \n  return \tmix(mix(mix(dot(pf - vec3(0, 0, 0), hash(pi + vec3(0, 0, 0))), \n                      dot(pf - vec3(1, 0, 0), hash(pi + vec3(1, 0, 0))),\n                      w.x),\n                  mix(dot(pf - vec3(0, 0, 1), hash(pi + vec3(0, 0, 1))), \n                      dot(pf - vec3(1, 0, 1), hash(pi + vec3(1, 0, 1))),\n                      w.x),\n                  w.z),\n              mix(mix(dot(pf - vec3(0, 1, 0), hash(pi + vec3(0, 1, 0))), \n                      dot(pf - vec3(1, 1, 0), hash(pi + vec3(1, 1, 0))),\n                      w.x),\n                  mix(dot(pf - vec3(0, 1, 1), hash(pi + vec3(0, 1, 1))), \n                      dot(pf - vec3(1, 1, 1), hash(pi + vec3(1, 1, 1))),\n                      w.x),\n                w.z),\n              w.y);\n}\n\nfloat getHeight(vec2 pos) {\n  float height = pow(1.0 - perlinNoise(vec3(pos.x, pos.y, 1000.0)), 0.3);\n  return height;\n}\nvoid main() {\n    vec4 color = vec4(u_albedo, 1.0);\n    \n    if (u_useTexture == 1) {\n        color = texture2D(texture, f_uv);\n    }\n\n    float d = clamp(dot(f_normal, normalize(u_lightPos - f_position)), 0.0, 1.0);\n    float height = getHeight(vec2(f_uv.x, f_uv.y))* 2.0;\n\n    float ran = random1(f_uv, vec2(0.2, 0.8));\n  \n    // if (ran < 0.05) {\n        color = color + height; \n    // }\n    gl_FragColor = vec4(d * color.rgb * u_lightCol * u_lightIntensity + u_ambient, 1.0);\n}"
 
 /***/ })
 /******/ ]);
