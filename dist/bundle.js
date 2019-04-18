@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -43369,40 +43369,10 @@ function CanvasRenderer() {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-// this file is just for convenience. it sets up loading the mario obj and texture
-
-var THREE = __webpack_require__(0);
-__webpack_require__(4)(THREE);
-
-var textureLoaded = exports.textureLoaded = new Promise(function (resolve, reject) {
-    new THREE.TextureLoader().load(__webpack_require__(2), function (texture) {
-        resolve(texture);
-    });
-});
-
-var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
-    new THREE.OBJLoader().load(__webpack_require__(24), function (obj) {
-        var geo = obj.children[0].geometry;
-        geo.computeBoundingSphere();
-        resolve(geo);
-    });
-});
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
 module.exports = __webpack_require__.p + "./assets/wahoo-1bfe66.bmp";
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -43410,11 +43380,11 @@ module.exports = __webpack_require__.p + "./assets/wahoo-1bfe66.bmp";
  */
 
 module.exports = function(THREE) {
-  var CopyShader = EffectComposer.CopyShader = __webpack_require__(25)
-    , RenderPass = EffectComposer.RenderPass = __webpack_require__(28)(THREE)
-    , ShaderPass = EffectComposer.ShaderPass = __webpack_require__(29)(THREE, EffectComposer)
-    , MaskPass = EffectComposer.MaskPass = __webpack_require__(27)(THREE)
-    , ClearMaskPass = EffectComposer.ClearMaskPass = __webpack_require__(26)(THREE)
+  var CopyShader = EffectComposer.CopyShader = __webpack_require__(23)
+    , RenderPass = EffectComposer.RenderPass = __webpack_require__(26)(THREE)
+    , ShaderPass = EffectComposer.ShaderPass = __webpack_require__(27)(THREE, EffectComposer)
+    , MaskPass = EffectComposer.MaskPass = __webpack_require__(25)(THREE)
+    , ClearMaskPass = EffectComposer.ClearMaskPass = __webpack_require__(24)(THREE)
 
   function EffectComposer( renderer, renderTarget ) {
     this.renderer = renderer;
@@ -43553,7 +43523,7 @@ module.exports = function(THREE) {
 };
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44224,19 +44194,13 @@ module.exports = function (THREE) {
 };
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = "\nvarying vec2 f_uv;\nvarying vec3 f_normal;\nvarying vec3 f_position;\n\n// uv, position, projectionMatrix, modelViewMatrix, normal\nvoid main() {\n    f_uv = uv;\n    f_normal = normal;\n    f_position = position;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}"
-
-/***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = "\n// we use this vertex shader for the post process steps. All we do is copy the uv value and set position appropriately\n\nvarying vec2 f_uv;\nvoid main() {\n    f_uv = uv;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}"
 
 /***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44249,16 +44213,16 @@ Object.defineProperty(exports, "__esModule", {
 // this file is just for convenience. it sets up loading the mario obj and texture
 
 var THREE = __webpack_require__(0);
-__webpack_require__(4)(THREE);
+__webpack_require__(3)(THREE);
 
 var textureLoaded = exports.textureLoaded = new Promise(function (resolve, reject) {
-    new THREE.TextureLoader().load(__webpack_require__(2), function (texture) {
+    new THREE.TextureLoader().load(__webpack_require__(1), function (texture) {
         resolve(texture);
     });
 });
 
 var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
-    new THREE.OBJLoader().load(__webpack_require__(23), function (obj) {
+    new THREE.OBJLoader().load(__webpack_require__(21), function (obj) {
         var geo = obj.children[0].geometry;
         geo.computeBoundingSphere();
         resolve(geo);
@@ -44266,7 +44230,7 @@ var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
 });
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44277,15 +44241,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setupGUI = setupGUI;
 
-var _shaders = __webpack_require__(17);
+var _shaders = __webpack_require__(16);
 
 var Shaders = _interopRequireWildcard(_shaders);
 
-var _post = __webpack_require__(15);
+var _post = __webpack_require__(14);
 
 var Post = _interopRequireWildcard(_post);
 
-var _datGui = __webpack_require__(20);
+var _datGui = __webpack_require__(18);
 
 var _datGui2 = _interopRequireDefault(_datGui);
 
@@ -44356,26 +44320,26 @@ function setupGUI(shaderSet, postProcessSet) {
 }
 
 /***/ }),
-/* 9 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "./assets/lily-90af6e.bmp";
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "index.html";
 
 /***/ }),
-/* 11 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define(t):e.Stats=t()}(this,function(){"use strict";var c=function(){var n=0,l=document.createElement("div");function e(e){return l.appendChild(e.dom),e}function t(e){for(var t=0;t<l.children.length;t++)l.children[t].style.display=t===e?"block":"none";n=e}l.style.cssText="position:fixed;top:0;left:0;cursor:pointer;opacity:0.9;z-index:10000",l.addEventListener("click",function(e){e.preventDefault(),t(++n%l.children.length)},!1);var i=(performance||Date).now(),a=i,o=0,f=e(new c.Panel("FPS","#0ff","#002")),r=e(new c.Panel("MS","#0f0","#020"));if(self.performance&&self.performance.memory)var d=e(new c.Panel("MB","#f08","#201"));return t(0),{REVISION:16,dom:l,addPanel:e,showPanel:t,begin:function(){i=(performance||Date).now()},end:function(){o++;var e=(performance||Date).now();if(r.update(e-i,200),a+1e3<=e&&(f.update(1e3*o/(e-a),100),a=e,o=0,d)){var t=performance.memory;d.update(t.usedJSHeapSize/1048576,t.jsHeapSizeLimit/1048576)}return e},update:function(){i=this.end()},domElement:l,setMode:t}};return c.Panel=function(n,l,i){var a=1/0,o=0,f=Math.round,r=f(window.devicePixelRatio||1),d=80*r,e=48*r,c=3*r,p=2*r,u=3*r,s=15*r,m=74*r,h=30*r,y=document.createElement("canvas");y.width=d,y.height=e,y.style.cssText="width:80px;height:48px";var v=y.getContext("2d");return v.font="bold "+9*r+"px Helvetica,Arial,sans-serif",v.textBaseline="top",v.fillStyle=i,v.fillRect(0,0,d,e),v.fillStyle=l,v.fillText(n,c,p),v.fillRect(u,s,m,h),v.fillStyle=i,v.globalAlpha=.9,v.fillRect(u,s,m,h),{dom:y,update:function(e,t){a=Math.min(a,e),o=Math.max(o,e),v.fillStyle=i,v.globalAlpha=1,v.fillRect(0,0,d,s),v.fillStyle=l,v.fillText(f(e)+" "+n+" ("+f(a)+"-"+f(o)+")",c,p),v.drawImage(y,u+r,s,m-r,h,u,s,m-r,h),v.fillRect(u+m-r,s,r,h),v.fillStyle=i,v.globalAlpha=.9,v.fillRect(u+m-r,s,r,f((1-e/t)*h))}}},c});
 
 
 /***/ }),
-/* 12 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = function( THREE ) {
@@ -45401,26 +45365,26 @@ module.exports = function( THREE ) {
 
 
 /***/ }),
-/* 13 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _statsJs = __webpack_require__(11);
+var _statsJs = __webpack_require__(9);
 
 var _statsJs2 = _interopRequireDefault(_statsJs);
 
-var _rectangle = __webpack_require__(7);
+var _rectangle = __webpack_require__(5);
 
-var _setup = __webpack_require__(8);
+var _setup = __webpack_require__(6);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(10);
+__webpack_require__(8);
 
 var THREE = __webpack_require__(0);
-var OrbitControls = __webpack_require__(12)(THREE);
+var OrbitControls = __webpack_require__(10)(THREE);
 // import {objLoaded} from './mario'
 
 
@@ -45467,7 +45431,7 @@ window.addEventListener('load', function () {
             mesh = new THREE.Mesh(geo, shader.material);
             var basicMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
             // scene.add(mesh);
-            var texture = new THREE.TextureLoader().load(__webpack_require__(9));
+            var texture = new THREE.TextureLoader().load(__webpack_require__(7));
             texture.magFilter = THREE.NearestFilter;
             var material = new THREE.MeshBasicMaterial({ map: texture });
 
@@ -45508,7 +45472,37 @@ window.addEventListener('load', function () {
 });
 
 /***/ }),
-/* 14 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+// this file is just for convenience. it sets up loading the mario obj and texture
+
+var THREE = __webpack_require__(0);
+__webpack_require__(3)(THREE);
+
+var textureLoaded = exports.textureLoaded = new Promise(function (resolve, reject) {
+    new THREE.TextureLoader().load(__webpack_require__(1), function (texture) {
+        resolve(texture);
+    });
+});
+
+var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
+    new THREE.OBJLoader().load(__webpack_require__(22), function (obj) {
+        var geo = obj.children[0].geometry;
+        geo.computeBoundingSphere();
+        resolve(geo);
+    });
+});
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45519,7 +45513,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Grayscale;
 var THREE = __webpack_require__(0);
-var EffectComposer = __webpack_require__(3)(THREE);
+var EffectComposer = __webpack_require__(2)(THREE);
 
 var options = {
     amount: 1
@@ -45536,8 +45530,8 @@ var GrayscaleShader = new EffectComposer.ShaderPass({
             value: options.amount
         }
     },
-    vertexShader: __webpack_require__(6),
-    fragmentShader: __webpack_require__(30)
+    vertexShader: __webpack_require__(4),
+    fragmentShader: __webpack_require__(28)
 });
 
 function Grayscale(renderer, scene, camera) {
@@ -45569,7 +45563,7 @@ function Grayscale(renderer, scene, camera) {
 }
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45580,7 +45574,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.None = None;
 
-var _grayscale = __webpack_require__(14);
+var _grayscale = __webpack_require__(13);
 
 Object.defineProperty(exports, 'Grayscale', {
     enumerable: true,
@@ -45589,7 +45583,7 @@ Object.defineProperty(exports, 'Grayscale', {
     }
 });
 
-var _ink = __webpack_require__(16);
+var _ink = __webpack_require__(15);
 
 Object.defineProperty(exports, 'Ink', {
     enumerable: true,
@@ -45616,7 +45610,7 @@ function None(renderer, scene, camera) {
 // follow this syntax to make your shaders available to the GUI
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45627,7 +45621,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Ink;
 var THREE = __webpack_require__(0);
-var EffectComposer = __webpack_require__(3)(THREE);
+var EffectComposer = __webpack_require__(2)(THREE);
 
 var options = {
     amount: 1
@@ -45652,8 +45646,8 @@ var InkShader = new EffectComposer.ShaderPass({
             value: screen.width
         }
     },
-    vertexShader: __webpack_require__(6),
-    fragmentShader: __webpack_require__(31)
+    vertexShader: __webpack_require__(4),
+    fragmentShader: __webpack_require__(29)
 });
 
 function Ink(renderer, scene, camera) {
@@ -45685,7 +45679,7 @@ function Ink(renderer, scene, camera) {
 }
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45695,7 +45689,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _lambert = __webpack_require__(18);
+var _lambert = __webpack_require__(17);
 
 Object.defineProperty(exports, 'Lambert', {
   enumerable: true,
@@ -45704,204 +45698,106 @@ Object.defineProperty(exports, 'Lambert', {
   }
 });
 
-var _paper = __webpack_require__(19);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-Object.defineProperty(exports, 'Paper', {
-  enumerable: true,
-  get: function get() {
-    return _interopRequireDefault(_paper).default;
-  }
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
 });
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+exports.default = function (renderer, scene, camera) {
+
+    var Shader = {
+        initGUI: function initGUI(gui) {
+            gui.addColor(options, 'lightColor').onChange(function (val) {
+                Shader.material.uniforms.u_lightCol.value = new THREE.Color(val);
+            });
+            gui.add(options, 'lightIntensity').onChange(function (val) {
+                Shader.material.uniforms.u_lightIntensity.value = val;
+            });
+            gui.addColor(options, 'albedo').onChange(function (val) {
+                Shader.material.uniforms.u_albedo.value = new THREE.Color(val);
+            });
+            gui.addColor(options, 'ambient').onChange(function (val) {
+                Shader.material.uniforms.u_ambient.value = new THREE.Color(val);
+            });
+            gui.add(options, 'useTexture').onChange(function (val) {
+                Shader.material.uniforms.u_useTexture.value = val;
+            });
+        },
+
+        material: new THREE.ShaderMaterial({
+            uniforms: {
+                texture: {
+                    type: "t",
+                    value: null
+                },
+                u_useTexture: {
+                    type: 'i',
+                    value: options.useTexture
+                },
+                u_albedo: {
+                    type: 'v3',
+                    value: new THREE.Color(options.albedo)
+                },
+                u_ambient: {
+                    type: 'v3',
+                    value: new THREE.Color(options.ambient)
+                },
+                u_lightPos: {
+                    type: 'v3',
+                    value: new THREE.Vector3(30, 50, 40)
+                },
+                u_lightCol: {
+                    type: 'v3',
+                    value: new THREE.Color(options.lightColor)
+                },
+                u_lightIntensity: {
+                    type: 'f',
+                    value: options.lightIntensity
+                }
+            },
+            vertexShader: __webpack_require__(31),
+            fragmentShader: __webpack_require__(30)
+        })
+
+        // once the Mario texture loads, bind it to the material
+    };_mario.textureLoaded.then(function (texture) {
+        Shader.material.uniforms.texture.value = texture;
+    });
+
+    return Shader;
+};
+
+var _mario = __webpack_require__(12);
+
+var THREE = __webpack_require__(0);
+
+
+// options for lambert shader
+var options = {
+    lightColor: '#ffffff',
+    lightIntensity: 2,
+    albedo: '#dddddd',
+    ambient: '#111111',
+    useTexture: true
+};
 
 /***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function (renderer, scene, camera) {
-
-    var Shader = {
-        initGUI: function initGUI(gui) {
-            gui.addColor(options, 'lightColor').onChange(function (val) {
-                Shader.material.uniforms.u_lightCol.value = new THREE.Color(val);
-            });
-            gui.add(options, 'lightIntensity').onChange(function (val) {
-                Shader.material.uniforms.u_lightIntensity.value = val;
-            });
-            gui.addColor(options, 'albedo').onChange(function (val) {
-                Shader.material.uniforms.u_albedo.value = new THREE.Color(val);
-            });
-            gui.addColor(options, 'ambient').onChange(function (val) {
-                Shader.material.uniforms.u_ambient.value = new THREE.Color(val);
-            });
-            gui.add(options, 'useTexture').onChange(function (val) {
-                Shader.material.uniforms.u_useTexture.value = val;
-            });
-        },
-
-        material: new THREE.ShaderMaterial({
-            uniforms: {
-                texture: {
-                    type: "t",
-                    value: null
-                },
-                u_useTexture: {
-                    type: 'i',
-                    value: options.useTexture
-                },
-                u_albedo: {
-                    type: 'v3',
-                    value: new THREE.Color(options.albedo)
-                },
-                u_ambient: {
-                    type: 'v3',
-                    value: new THREE.Color(options.ambient)
-                },
-                u_lightPos: {
-                    type: 'v3',
-                    value: new THREE.Vector3(30, 50, 40)
-                },
-                u_lightCol: {
-                    type: 'v3',
-                    value: new THREE.Color(options.lightColor)
-                },
-                u_lightIntensity: {
-                    type: 'f',
-                    value: options.lightIntensity
-                }
-            },
-            vertexShader: __webpack_require__(5),
-            fragmentShader: __webpack_require__(32)
-        })
-
-        // once the Mario texture loads, bind it to the material
-    };_mario.textureLoaded.then(function (texture) {
-        Shader.material.uniforms.texture.value = texture;
-    });
-
-    return Shader;
-};
-
-var _mario = __webpack_require__(1);
-
-var THREE = __webpack_require__(0);
-
-
-// options for lambert shader
-var options = {
-    lightColor: '#ffffff',
-    lightIntensity: 2,
-    albedo: '#dddddd',
-    ambient: '#111111',
-    useTexture: true
-};
+module.exports = __webpack_require__(20)
+module.exports.color = __webpack_require__(19)
 
 /***/ }),
 /* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function (renderer, scene, camera) {
-
-    var Shader = {
-        initGUI: function initGUI(gui) {
-            gui.addColor(options, 'lightColor').onChange(function (val) {
-                Shader.material.uniforms.u_lightCol.value = new THREE.Color(val);
-            });
-            gui.add(options, 'lightIntensity').onChange(function (val) {
-                Shader.material.uniforms.u_lightIntensity.value = val;
-            });
-            gui.addColor(options, 'albedo').onChange(function (val) {
-                Shader.material.uniforms.u_albedo.value = new THREE.Color(val);
-            });
-            gui.addColor(options, 'ambient').onChange(function (val) {
-                Shader.material.uniforms.u_ambient.value = new THREE.Color(val);
-            });
-            gui.add(options, 'useTexture').onChange(function (val) {
-                Shader.material.uniforms.u_useTexture.value = val;
-            });
-        },
-
-        material: new THREE.ShaderMaterial({
-            uniforms: {
-                texture: {
-                    type: "t",
-                    value: null
-                },
-                u_useTexture: {
-                    type: 'i',
-                    value: options.useTexture
-                },
-                u_albedo: {
-                    type: 'v3',
-                    value: new THREE.Color(options.albedo)
-                },
-                u_ambient: {
-                    type: 'v3',
-                    value: new THREE.Color(options.ambient)
-                },
-                u_lightPos: {
-                    type: 'v3',
-                    value: new THREE.Vector3(30, 50, 40)
-                },
-                u_lightCol: {
-                    type: 'v3',
-                    value: new THREE.Color(options.lightColor)
-                },
-                u_lightIntensity: {
-                    type: 'f',
-                    value: options.lightIntensity
-                }
-            },
-            vertexShader: __webpack_require__(5),
-            fragmentShader: __webpack_require__(33)
-        })
-
-        // once the Mario texture loads, bind it to the material
-    };_mario.textureLoaded.then(function (texture) {
-        Shader.material.uniforms.texture.value = texture;
-    });
-
-    return Shader;
-};
-
-var _mario = __webpack_require__(1);
-
-var THREE = __webpack_require__(0);
-
-
-// options for lambert shader
-var options = {
-    lightColor: '#ffffff',
-    lightIntensity: 2,
-    albedo: '#dddddd',
-    ambient: '#111111',
-    useTexture: true
-};
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(22)
-module.exports.color = __webpack_require__(21)
-
-/***/ }),
-/* 21 */
 /***/ (function(module, exports) {
 
 /**
@@ -46661,7 +46557,7 @@ dat.color.toString,
 dat.utils.common);
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /**
@@ -50326,19 +50222,19 @@ dat.dom.dom,
 dat.utils.common);
 
 /***/ }),
-/* 23 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "./assets/rectangle-5f45f0.obj";
 
 /***/ }),
-/* 24 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "./assets/wahoo-d362db.obj";
 
 /***/ }),
-/* 25 */
+/* 23 */
 /***/ (function(module, exports) {
 
 /**
@@ -50380,7 +50276,7 @@ module.exports = {
 
 
 /***/ }),
-/* 26 */
+/* 24 */
 /***/ (function(module, exports) {
 
 /**
@@ -50404,7 +50300,7 @@ module.exports = function(THREE) {
 };
 
 /***/ }),
-/* 27 */
+/* 25 */
 /***/ (function(module, exports) {
 
 /**
@@ -50481,7 +50377,7 @@ module.exports = function(THREE) {
 
 
 /***/ }),
-/* 28 */
+/* 26 */
 /***/ (function(module, exports) {
 
 /**
@@ -50544,7 +50440,7 @@ module.exports = function(THREE) {
 
 
 /***/ }),
-/* 29 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /**
@@ -50606,28 +50502,28 @@ module.exports = function(THREE, EffectComposer) {
 };
 
 /***/ }),
-/* 30 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = "\nuniform sampler2D tDiffuse;\nuniform float u_amount;\nvarying vec2 f_uv;\n\n// tDiffuse is a special uniform sampler that THREE.js will bind the previously rendered frame to\n\nvoid main() {\n    vec4 col = texture2D(tDiffuse, f_uv);\n    float gray = dot(col.rgb, vec3(0.299, 0.587, 0.114));\n\n    col.rgb = vec3(gray, gray, gray) * (u_amount) + col.rgb * (1.0 - u_amount);\n\n    gl_FragColor = col;\n}   "
 
 /***/ }),
-/* 31 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = "uniform sampler2D tDiffuse;\nuniform float u_amount;\nvarying vec2 f_uv;\n\n// tDiffuse is a special uniform sampler that THREE.js will bind the previously rendered frame to\n\nvoid main() {\n    // https://en.wikipedia.org/wiki/Sobel_operator\n    float epsilon = 0.001;\n\n    // Left of pixel\n    vec4 lUp = texture2D(tDiffuse, vec2(f_uv.x - epsilon, f_uv.y + epsilon));\n    vec4 left = texture2D(tDiffuse, vec2(f_uv.x - epsilon, f_uv.y));\n    vec4 lDown = texture2D(tDiffuse, vec2(f_uv.x - epsilon, f_uv.y - epsilon));\n\n    // Right of pixel\n    vec4 rUp = texture2D(tDiffuse, vec2(f_uv.x + epsilon, f_uv.y + epsilon));\n    vec4 right = texture2D(tDiffuse, vec2(f_uv.x + epsilon, f_uv.y));\n    vec4 rDown = texture2D(tDiffuse, vec2(f_uv.x + epsilon, f_uv.y - epsilon));\n\n    // Over and under pixel\n    vec4 up = texture2D(tDiffuse, vec2(f_uv.x, f_uv.y + epsilon));\n    vec4 down = texture2D(tDiffuse, vec2(f_uv.x, f_uv.y - epsilon));\n\n    // Apply kernel numbers to get gx and gy\n    vec4 gx = -1.0*lUp - 2.0*left - lDown + rUp + 2.0*right + rDown;\n    vec4 gy = -1.0*lUp - 2.0*up - rUp + lDown + 2.0*down + rDown;\n    vec4 g = sqrt(gx*gx + gy*gy);\n    \n    // Combine edge color with original colors\n    vec4 color = texture2D(tDiffuse, f_uv);\n    gl_FragColor = vec4(g.rgb, 1) * (u_amount) + color * (1.0 - u_amount);\n}"
 
 /***/ }),
-/* 32 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = "\nuniform sampler2D texture;\nuniform int u_useTexture;\nuniform vec3 u_albedo;\nuniform vec3 u_ambient;\nuniform vec3 u_lightPos;\nuniform vec3 u_lightCol;\nuniform float u_lightIntensity;\n\nvarying vec3 f_position;\nvarying vec3 f_normal;\nvarying vec2 f_uv;\n\nvoid main() {\n    vec4 color = vec4(u_albedo, 1.0);\n    \n    if (u_useTexture == 1) {\n        color = texture2D(texture, f_uv);\n    }\n\n    float d = clamp(dot(f_normal, normalize(u_lightPos - f_position)), 0.0, 1.0);\n\n    gl_FragColor = vec4(d * color.rgb * u_lightCol * u_lightIntensity + u_ambient, 1.0);\n}"
 
 /***/ }),
-/* 33 */
+/* 31 */
 /***/ (function(module, exports) {
 
-module.exports = "\nuniform sampler2D texture;\nuniform int u_useTexture;\nuniform vec3 u_albedo;\nuniform vec3 u_ambient;\nuniform vec3 u_lightPos;\nuniform vec3 u_lightCol;\nuniform float u_lightIntensity;\n\nvarying vec3 f_position;\nvarying vec3 f_normal;\nvarying vec2 f_uv;\n\nvoid main() {\n    vec4 color = vec4(u_albedo, 1.0);\n    \n    if (u_useTexture == 1) {\n        color = texture2D(texture, f_uv);\n    }\n\n    float d = clamp(dot(f_normal, normalize(u_lightPos - f_position)), 0.0, 1.0);\n\n    gl_FragColor = vec4(d * color.rgb * u_lightCol * u_lightIntensity + u_ambient, 1.0);\n}"
+module.exports = "\nvarying vec2 f_uv;\nvarying vec3 f_normal;\nvarying vec3 f_position;\n\n// uv, position, projectionMatrix, modelViewMatrix, normal\nvoid main() {\n    f_uv = uv;\n    f_normal = normal;\n    f_position = position;\n    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}"
 
 /***/ })
 /******/ ]);
