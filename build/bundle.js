@@ -43399,7 +43399,7 @@ var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "wahoo-1bfe66.bmp";
+module.exports = __webpack_require__.p + "./assets/wahoo-1bfe66.bmp";
 
 /***/ }),
 /* 3 */
@@ -44359,7 +44359,7 @@ function setupGUI(shaderSet, postProcessSet) {
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "lily-90af6e.bmp";
+module.exports = __webpack_require__.p + "./assets/lily-90af6e.bmp";
 
 /***/ }),
 /* 10 */
@@ -50329,13 +50329,13 @@ dat.utils.common);
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "rectangle-5f45f0.obj";
+module.exports = __webpack_require__.p + "./assets/rectangle-5f45f0.obj";
 
 /***/ }),
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "wahoo-d362db.obj";
+module.exports = __webpack_require__.p + "./assets/wahoo-d362db.obj";
 
 /***/ }),
 /* 25 */
