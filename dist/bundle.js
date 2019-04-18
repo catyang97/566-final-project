@@ -43399,7 +43399,7 @@ var objLoaded = exports.objLoaded = new Promise(function (resolve, reject) {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "./assets/wahoo-1bfe66.bmp";
+module.exports = __webpack_require__.p + "wahoo-1bfe66.bmp";
 
 /***/ }),
 /* 3 */
