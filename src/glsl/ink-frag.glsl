@@ -2,10 +2,8 @@ uniform sampler2D tDiffuse;
 uniform float u_amount;
 varying vec2 f_uv;
 
-// tDiffuse is a special uniform sampler that THREE.js will bind the previously rendered frame to
-
 void main() {
-    // https://en.wikipedia.org/wiki/Sobel_operator
+    // Sobel: https://en.wikipedia.org/wiki/Sobel_operator
     float epsilon = 0.001;
 
     // Left of pixel
@@ -29,5 +27,14 @@ void main() {
     
     // Combine edge color with original colors
     vec4 color = texture2D(tDiffuse, f_uv);
-    gl_FragColor = vec4(g.rgb, 1) * (u_amount) + color * (1.0 - u_amount);
+    // gl_FragColor = vec4(g.rgb, 1) * (u_amount) + color * (1.0 - u_amount);
+
+    // If pixel is at an edge, use the original color, else paint white
+    // Edge = key characteristic, thick ink. Otherwise, thin ink and more water for ink effect
+    if (g[0] > 10.0/255.0 && g[1] > 10.0/255.0 && g[2] > 10.0/255.0) {
+        g = color;
+    } else {
+        g = vec4(1.0);
+    }
+    gl_FragColor = g;
 }
