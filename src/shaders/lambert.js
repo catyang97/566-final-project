@@ -5,7 +5,7 @@ import {textureLoaded} from '../rectangle'
 // options for lambert shader
 var options = {
     lightColor: '#ffffff',
-    lightIntensity: 2,
+    lightIntensity: 1.8,
     albedo: '#dddddd',
     ambient: '#111111',
     useTexture: true

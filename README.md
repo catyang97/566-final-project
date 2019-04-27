@@ -1,7 +1,6 @@
 # Final Project
 ## PennKey: catyang
-### (catyang97.github.io/566-final-project/)
-- I'm really sorry, but I couldn't get the deploying to work. I tried using the steps that I used for the previous homeworks but keep getting this error message: bundle.js:1 Failed to load resource: the server responded with a status of 404 (). I also tried the npm run deploy method and the suggestion on piazza, but those both gave the same error.
+### catyang97.github.io/566-final-project/
 
 ---
 ## Resources

@@ -43,19 +43,6 @@ window.addEventListener('load', function() {
     // this gets called when we set the shader
     function shaderSet(Shader, gui) {
         // create the shader and initialize its gui
-        // shader = new Shader(renderer, scene, camera);
-        // shader.initGUI(gui);
-        // renderer.setClearColor(0x999999, 1.0);
-
-        // // recreate the mesh with a new material
-        // if (mesh) scene.remove(mesh);
-        // objLoaded.then(function(geo) {
-        //     //var geom = new THREE.SphereGeometry(5, 32, 32);
-        //     //geom.computeVertexNormals();
-        //     mesh = new THREE.Mesh(geo, shader.material);
-        //     scene.add(mesh);
-        // });
-        // create the shader and initialize its gui
         shader = new Shader(renderer, scene, camera);
         shader.initGUI(gui);
 
@@ -63,24 +50,7 @@ window.addEventListener('load', function() {
         if (mesh) scene.remove(mesh);
         objLoaded.then(function(geo) {
             mesh = new THREE.Mesh(geo, shader.material);
-            var basicMaterial = new THREE.MeshBasicMaterial( {color: 0xffffff} ); 
-            // scene.add(mesh);
-            var texture = new THREE.TextureLoader().load(require('./assets/lily.bmp'));
-            texture.magFilter = THREE.NearestFilter;
-            var material = new THREE.MeshBasicMaterial({ map: texture});
-            
-            var geometry = new THREE.BoxGeometry(20, 0.1, 20);
-            var materials = [
-                basicMaterial,
-                basicMaterial,
-                material,
-                basicMaterial,
-                basicMaterial,
-                basicMaterial,
-            ];
-            var meshFaceMaterial = new THREE.MeshFaceMaterial( materials );
-            var cube = new THREE.Mesh(geometry, meshFaceMaterial);
-            scene.add(cube);
+            scene.add(mesh);
         });
     }
 

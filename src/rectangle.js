@@ -6,13 +6,12 @@ require('three-obj-loader')(THREE)
 
 export var textureLoaded = new Promise((resolve, reject) => {
     (new THREE.TextureLoader()).load(require('./assets/lily.bmp'), function(texture) {
-        
         resolve(texture);
     })
 })
 
 export var objLoaded = new Promise((resolve, reject) => {
-    (new THREE.OBJLoader()).load(require('./assets/rect.obj'), function(obj) {
+    (new THREE.OBJLoader()).load(require('./assets/rect2.obj'), function(obj) {
         var geo = obj.children[0].geometry;
         geo.computeBoundingSphere();
         resolve(geo);
