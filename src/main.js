@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
     var renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x999999, 1.0);
+    renderer.setClearColor(0xc1edff, 1.0);
 
     var controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -30,9 +30,7 @@ window.addEventListener('load', function() {
     controls.rotateSpeed = 0.3;
     controls.zoomSpeed = 1.0;
     controls.panSpeed = 2.0;
-    var res = new THREE.Vector2( window.innerWidth, window.innerHeight );
-    res = res.multiplyScalar( window.devicePixelRatio );
-    console.log(res);
+
     document.body.appendChild(renderer.domElement);
 
     window.addEventListener('resize', function() {

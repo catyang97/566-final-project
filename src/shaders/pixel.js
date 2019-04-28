@@ -7,13 +7,17 @@ var options = {
     lightIntensity: 2,
     albedo: '#dddddd',
     ambient: '#111111',
-    useTexture: true
+    useTexture: true,
+    pixelSize: 18.0
 }
 
 export default function(renderer, scene, camera) {
     
     const Shader = {
         initGUI: function(gui) {
+            gui.add(options, 'pixelSize').onChange(function(val) {
+                Shader.material.uniforms.u_pixelSize.value = val;
+            });
             // gui.addColor(options, 'lightColor').onChange(function(val) {
             //     Shader.material.uniforms.u_lightCol.value = new THREE.Color(val);
             // });
@@ -60,6 +64,10 @@ export default function(renderer, scene, camera) {
                 u_lightIntensity: {
                     type: 'f',
                     value: options.lightIntensity
+                },
+                u_pixelSize: {
+                    type: 'f',
+                    value: options.pixelSize
                 }
             },
             vertexShader: require('../glsl/lambert-vert.glsl'),
