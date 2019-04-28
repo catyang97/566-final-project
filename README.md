@@ -10,6 +10,9 @@
 operator
 
 ---
+### Shaders
+- *pixel*: pixelizes the image
+---
 ## Milestone Progress
 - Apply image as texture to an object (painting)
 - Set up EffectComposer, ShaderPass, RenderPass for the ink shaders

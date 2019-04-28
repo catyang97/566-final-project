@@ -30,7 +30,9 @@ window.addEventListener('load', function() {
     controls.rotateSpeed = 0.3;
     controls.zoomSpeed = 1.0;
     controls.panSpeed = 2.0;
-
+    var res = new THREE.Vector2( window.innerWidth, window.innerHeight );
+    res = res.multiplyScalar( window.devicePixelRatio );
+    console.log(res);
     document.body.appendChild(renderer.domElement);
 
     window.addEventListener('resize', function() {
