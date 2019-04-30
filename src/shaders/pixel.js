@@ -10,6 +10,9 @@ var options = {
     useTexture: true,
     pixelSize: 18.0
 }
+var begin = Date.now();
+// var clock = new THREE.Clock();
+// var t = 0.0;
 
 export default function(renderer, scene, camera) {
     
@@ -33,6 +36,14 @@ export default function(renderer, scene, camera) {
             // gui.add(options, 'useTexture').onChange(function(val) {
             //     Shader.material.uniforms.u_useTexture.value = val;
             // });
+        },
+
+        update: function() {
+            // var a = clock.getDelta();
+            // t += a;
+            // Shader.material.uniforms.time.value = t;
+            
+            Shader.material.uniforms.time.value = 0.0005 * (Date.now() - begin);
         },
         
         material: new THREE.ShaderMaterial({
@@ -68,6 +79,10 @@ export default function(renderer, scene, camera) {
                 u_pixelSize: {
                     type: 'f',
                     value: options.pixelSize
+                },
+                time: {
+                    type: "f", 
+                    value: begin
                 }
             },
             vertexShader: require('../glsl/lambert-vert.glsl'),

@@ -65,7 +65,7 @@ window.addEventListener('load', function() {
 
     objLoaded.then(function(geo) {
         // point the camera to Mario on load
-        camera.position.set(5, 10, 15);
+        camera.position.set(5, 0, 15);
         const center = geo.boundingSphere.center;
         camera.lookAt(center);
         controls.target.set(center.x, center.y, center.z);

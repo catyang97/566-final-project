@@ -8,6 +8,7 @@
 - Image-Based Color Ink Diffusion Rendering (paper inspiration): https://ieeexplore.ieee.org/abstract/document/4069233
 - Sobel filtering: https://en.wikipedia.org/wiki/Sobel_
 operator
+- CIS700 Color Slides: https://cis700-procedural-graphics.github.io/files/color_2_14_17.pdf
 
 ---
 ### Shaders

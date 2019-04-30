@@ -5,7 +5,7 @@ const THREE = require('three');
 require('three-obj-loader')(THREE)
 
 export var textureLoaded = new Promise((resolve, reject) => {
-    (new THREE.TextureLoader()).load(require('./assets/lily.bmp'), function(texture) {
+    (new THREE.TextureLoader()).load(require('./assets/mountain.bmp'), function(texture) {
         resolve(texture);
     })
 })
