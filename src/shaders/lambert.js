@@ -15,12 +15,12 @@ export default function(renderer, scene, camera) {
     
     const Shader = {
         initGUI: function(gui) {
-            // gui.addColor(options, 'lightColor').onChange(function(val) {
-            //     Shader.material.uniforms.u_lightCol.value = new THREE.Color(val);
-            // });
-            // gui.add(options, 'lightIntensity').onChange(function(val) {
-            //     Shader.material.uniforms.u_lightIntensity.value = val;
-            // });
+            gui.addColor(options, 'lightColor').onChange(function(val) {
+                Shader.material.uniforms.u_lightCol.value = new THREE.Color(val);
+            });
+            gui.add(options, 'lightIntensity').onChange(function(val) {
+                Shader.material.uniforms.u_lightIntensity.value = val;
+            });
             // gui.addColor(options, 'albedo').onChange(function(val) {
             //     Shader.material.uniforms.u_albedo.value = new THREE.Color(val);
             // });

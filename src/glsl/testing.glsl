@@ -159,12 +159,12 @@ void main() {
     // }
     vec4 outCol = vec4(1.0);
     // if (g[0] > 20.0/255.0 && g[1] > 20.0/255.0 && g[2] > 10.0/255.0) { // edge
-        // KMCol(col.xyz, 1.0, r1,t1);
-        // KMCol(left.xyz, 1.0, r2, t2);
-        // layer(r1, t1, r2, t2, rr, tt);
-        // // g = col;
-        // vec3 total = rr + tt;
-        // outCol = vec4(total,1.0);
+        KMCol(col.xyz, 1.0, r1,t1);
+        KMCol(left.xyz, 1.0, r2, t2);
+        layer(r1, t1, r2, t2, rr, tt);
+        // g = col;
+        vec3 total = rr + tt;
+        outCol = vec4(total,1.0);
 
     // } else {
     //     g = vec4(1.0);

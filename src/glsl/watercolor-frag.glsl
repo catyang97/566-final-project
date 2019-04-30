@@ -33,13 +33,23 @@ void main() {
     vec4 newCol = col;
 
     // Luminance Division step: equations 10 and 11 in section 4.1 of paper
-    newCol = vec4((30.0*ceil(col.r*255.0 / 30.0))/255.0, (30.0*ceil(col.g*255.0 / 30.0))/255.0, (30.0*ceil(col.b*255.0 / 30.0))/255.0, newCol.a);
+    // newCol = vec4((30.0*ceil(col.r*255.0 / 30.0))/255.0, (30.0*ceil(col.g*255.0 / 30.0))/255.0, (30.0*ceil(col.b*255.0 / 30.0))/255.0, newCol.a);
     // newCol.rgb = (ceil(luminance/floor(255.0/23.0)) / luminance) * newCol.rbg;
     newCol = newCol * (u_amount) + col * (1.0 - u_amount);
     // If pixel is at an edge, use the original color, else paint white
     // Edge = key characteristic, thick ink. Otherwise, thin ink and more water for ink effect
-    if (g[0] > 20.0/255.0 && g[1] > 20.0/255.0 && g[2] > 10.0/255.0) {
-        g = col-0.1;
+    if (g[0] > 30.0/255.0 && g[1] > 30.0/255.0 && g[2] > 10.0/255.0) {
+        // "Color bleeding"
+        vec4 left1 = texture2D(tDiffuse, vec2(f_uv.x - epsilon, f_uv.y));
+        vec4 right1 = texture2D(tDiffuse, vec2(f_uv.x + epsilon, f_uv.y));
+        vec4 rDown1 = texture2D(tDiffuse, vec2(f_uv.x + epsilon + 0.003, f_uv.y - epsilon));
+        vec4 lUp1 = texture2D(tDiffuse, vec2(f_uv.x - epsilon-0.005, f_uv.y + epsilon));
+        vec4 up1 = texture2D(tDiffuse, vec2(f_uv.x, f_uv.y + epsilon+0.015));
+
+        g = mix(left1, right1, 0.5);
+        g = mix(g, lUp1, 0.6);
+        g = mix(g, rDown1, 0.6);
+        g = mix(up1, g, 0.6);
     } else {
         g = newCol;
     }

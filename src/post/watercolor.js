@@ -44,9 +44,9 @@ export default function Watercolor(renderer, scene, camera) {
 
     return {
         initGUI: function(gui) {
-            gui.add(options, 'amount', 0, 1).onChange(function(val) {
-                WatercolorShader.material.uniforms.u_amount.value = val;
-            });
+            // gui.add(options, 'amount', 0, 1).onChange(function(val) {
+            //     WatercolorShader.material.uniforms.u_amount.value = val;
+            // });
         },
         
         render: function() {;
