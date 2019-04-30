@@ -36,11 +36,6 @@ float fbm(vec3 p) {
 
 void main() {
     vec4 color = texture2D(texture, f_uv);
-    
-    // float d = clamp(dot(f_normal, normalize(u_lightPos - f_position)), 0.0, 1.0);
-    // float height = getHeight(vec2(f_uv.x, f_uv.y))* 2.0;
-
-    // gl_FragColor = vec4(d * color.rgb * u_lightCol * u_lightIntensity + u_ambient, 1.0);
     vec2 uv = vec2(f_uv.x, f_uv.y);
     vec3 col = 1.0 - 0.025 * vec3(smoothstep(0.6, 0.2, fbm(vec3(uv * 70.0,1.0))));
     vec3 diff = vec3(color.x + (1.0-col.x)*2.0, color.y + (1.0-col.y)*2.0, color.z + (1.0-col.z)*2.0);

@@ -1,6 +1,27 @@
 # Final Project
 ## PennKey: catyang
-### catyang97.github.io/566-final-project/
+### catyang97.github.io/566-final-project/ 
+
+---
+## The ~Project~
+
+The inspiration for the project came from a paper titled *Image-Based Color Ink Diffusion Rendering* which describes a method for simulating how ink mixes and diffuses on paper. However, there were a couple parts of the algorithm/pipeline that were not very feasible to implement. SO, instead I took pieces of the paper and mainly implemented my own shaders with three.js for different non-photorealistic techniques, using Project 5 from CIS700 as the base code.
+
+I made a rectangular obj for the canvas and the bmp images are loaded as textures for the image that we are manipulating. The shaders in the shader folder use the material from the obj texture. The post-processing shaders are each set up with a EffectComposer, ShaderPass, and RenderPass. (The image right now is from the mountain.bmp file but any bmp file can be loaded by editing the rectangle.js file.)
+
+---
+## Shaders!
+
+From the shader dropdown
+- *LAMBERT*: from the base code
+- *PAPER*: adds noise to the texture to simulate water color paper texture
+- *PIXEL*: pixelizes the image and moves/blinks with time
+
+From the post(processing) dropdown
+- *INK*: uses sobel filtering to color edges black and add inky shading around the edges
+- *FEATURE*: separates the image into bigger blocks of similar colors
+- *WATERCOLOR*: uses sobel to find edges and then 'bleeds color' by mixing with the colors around the edges. best when combined with the *paper* shader
+- *WARP*: warps the image with fbm functions from shadertoy
 
 ---
 ## Resources
@@ -9,41 +30,25 @@
 - Sobel filtering: https://en.wikipedia.org/wiki/Sobel_
 operator
 - CIS700 Color Slides: https://cis700-procedural-graphics.github.io/files/color_2_14_17.pdf
+- Noise functions (in shaders' comments) from Shadertoy
 
 ---
-### Shaders
-- *pixel*: pixelizes the image
----
-## Milestone Progress
-- Apply image as texture to an object (painting)
-- Set up EffectComposer, ShaderPass, RenderPass for the ink shaders
-- Sobel filtering to find/emphasize edge data
-- Getting more familiar with three js
-- Started setting up noise for paper texture
+## Images!!
 
-### Shaders (work in progress)
-- *ink*: currently uses sobel filtering to find the edges and only colors the edges. This is part of step 1 of the algorithm in the paper, "feature extraction", to find the main characteristics.
-- *feature*: partitions the image into chunkier regions of similar color. Also part of step 1 and called color segmentation. (amount adjustable)
-- *paper*: using noise to simulate paper texture. (doesn't work yet, see next steps)
-- (Paper is in the shader section of the gui while ink and feature are in post.)
+### Pixel
+![](images/lotuspixel.png)![](images/mountainbigpixel.png)
 
----
-## Next Steps
-- Combine shaders. Right now, I have different steps of the algorithms separated.
-- Finish implementing the ink diffusion algorithm.
-- Figure out how to change the rectangle so that it takes the shader material info while also wrapping the image material around the obj correctly. 
-- Add more non-photorealistic effect options to the images
-- Friendlier UI and add ability to input image
+### Ink
+![](images/lotusink.png)![](images/rainierink.png)
 
----
-## Images
-Original
-![](painting.png)
+### Watercolor
+![](images/waterviscacha.png)![](images/mountainwater.png)![](images/mountainwaternopaper.png)![](images/rainierwater.png)![](images/rainierwaterclose.png)
 
-Ink Shader: Sobel + Edge Coloring
-![](ink.png)
+### Feature
+![](images/lotusfeature.png)
 
-Feature Shader
-![](feature.png)
-Close Up
-![](featureclose.png)
+## Warp
+![](images/lotuswarp.png)![](images/rainierwarp.png)
+
+### Original Images for Reference
+![](images/lotusorig.png) ![](images/mountainorig.png)![](images/viscacha.png)

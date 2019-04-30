@@ -21,15 +21,6 @@ export default function(renderer, scene, camera) {
             gui.add(options, 'lightIntensity').onChange(function(val) {
                 Shader.material.uniforms.u_lightIntensity.value = val;
             });
-            // gui.addColor(options, 'albedo').onChange(function(val) {
-            //     Shader.material.uniforms.u_albedo.value = new THREE.Color(val);
-            // });
-            // gui.addColor(options, 'ambient').onChange(function(val) {
-            //     Shader.material.uniforms.u_ambient.value = new THREE.Color(val);
-            // });
-            // gui.add(options, 'useTexture').onChange(function(val) {
-            //     Shader.material.uniforms.u_useTexture.value = val;
-            // });
         },
         
         material: new THREE.ShaderMaterial({
@@ -68,7 +59,7 @@ export default function(renderer, scene, camera) {
         })
     }
 
-    // once the Mario texture loads, bind it to the material
+    // once the texture loads, bind it to the material
     textureLoaded.then(function(texture) {
         Shader.material.uniforms.texture.value = texture;
     });

@@ -2,7 +2,31 @@ uniform sampler2D tDiffuse;
 uniform float u_amount;
 varying vec2 f_uv;
 
+// Math functions 
+vec3 cosh(vec3 val) { vec3 e = exp(val); return (e + vec3(1.0) / e) / vec3(2.0); }
+vec3 sinh(vec3 val) { vec3 e = exp(val); return (e - vec3(1.0) / e) / vec3(2.0); }
+
+// Kubelka-Munk reflectance and transmittance model
+void KMCol(vec3 color, float x, out vec3 refl, out vec3 trans) {
+    // Absorption coefficient
+    vec3 Ab = vec3(0.9999998);
+    // Scattering coefficient
+    vec3 S = (2.0*color)/((Ab-color)*(Ab-color));
+    vec3 a = (S+Ab)/S;
+    vec3 b = sqrt(a*a - vec3(1.0));
+    vec3 c = a*(sinh(b*S*x)) + b*(cosh(b*S*x));
+    refl = (sinh(b*S*x))/c;
+    trans = b/c;
+}
+
+void layer(vec3 r1, vec3 t1, vec3 r2, vec3 t2, out vec3 refl, out vec3 trans) {
+    refl = r1 + t1*t1*r2/(vec3(1.0)-r1*r2);
+    trans = t1*t2 / (vec3(1.0)-r1*r2);
+}
+
 void main() {
+    vec3 r1,t1,r2,t2,rr,tt;
+
     // Sobel: https://en.wikipedia.org/wiki/Sobel_operator
     float epsilon = 0.001;
 
@@ -25,18 +49,12 @@ void main() {
     vec4 gy = -1.0*lUp - 2.0*up - rUp + lDown + 2.0*down + rDown;
     vec4 g = sqrt(gx*gx + gy*gy);
     
-    // Combine edge color with original colors
     vec4 color = texture2D(tDiffuse, f_uv);
-    // gl_FragColor = vec4(g.rgb, 1) * (u_amount) + color * (1.0 - u_amount);
     vec4 col = texture2D(tDiffuse, f_uv);
     float luminance = dot(col.rgb, vec3(0.2126*255.0, 0.7152*255.0, 0.0722*255.0));
     vec4 newCol = col;
 
-    // Luminance Division step: equations 10 and 11 in section 4.1 of paper
-    // newCol = vec4((30.0*ceil(col.r*255.0 / 30.0))/255.0, (30.0*ceil(col.g*255.0 / 30.0))/255.0, (30.0*ceil(col.b*255.0 / 30.0))/255.0, newCol.a);
-    // newCol.rgb = (ceil(luminance/floor(255.0/23.0)) / luminance) * newCol.rbg;
     newCol = newCol * (u_amount) + col * (1.0 - u_amount);
-    // If pixel is at an edge, use the original color, else paint white
     // Edge = key characteristic, thick ink. Otherwise, thin ink and more water for ink effect
     if (g[0] > 30.0/255.0 && g[1] > 30.0/255.0 && g[2] > 10.0/255.0) {
         // "Color bleeding"

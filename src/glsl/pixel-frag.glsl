@@ -27,6 +27,7 @@ void main() {
     vec2 coord3 = square * floor(vec2(f_uv.x + epsilon, f_uv.y - epsilon-0.02)/square);
     vec2 coord4 = square * floor(vec2(f_uv.x, f_uv.y + epsilon)/square);
 
+    // Randomize the block that is colored
     float rand = random(coord);
     if (rand > 0.6) {
         coord = coord2;

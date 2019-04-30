@@ -32,7 +32,7 @@ void main() {
     float y = 30.0*f_uv.y*f_uv.y;
     float amount = 0.05*u_amount;
     vec2 uv = vec2(f_uv.x + fbm(vec3(x, y, time)) * amount, 
-                f_uv.y + fbm(vec3(y, x, time)) * amount);
+                    f_uv.y + fbm(vec3(y, x, time)) * amount);
     vec4 col = texture2D(tDiffuse, uv);
 
     gl_FragColor = col;
