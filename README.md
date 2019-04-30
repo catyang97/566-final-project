@@ -3,7 +3,7 @@
 ### catyang97.github.io/566-final-project/ 
 
 ---
-## The ~Project~
+## The ~ Project ~
 
 The inspiration for the project came from a paper titled *Image-Based Color Ink Diffusion Rendering* which describes a method for simulating how ink mixes and diffuses on paper. However, there were a couple parts of the algorithm/pipeline that were not very feasible to implement. SO, instead I took pieces of the paper and mainly implemented my own shaders with three.js for different non-photorealistic techniques, using Project 5 from CIS700 as the base code.
 
